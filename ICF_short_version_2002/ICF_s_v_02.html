@@ -1,0 +1,2084 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>ICF short version</title>
+<style type="text/css">
+    body {}
+    li { list-style: none;  margin: 0; }
+    p { margin: 0; }
+    span.foldopened { color: white; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: visible;
+    cursor:pointer; }
+
+
+    span.foldclosed { color: #666666; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: hidden;
+    cursor:pointer; }
+
+    span.foldspecial { color: #666666; font-size: xx-small; border-style: none solid solid none;
+    border-color: #CCCCCC; border-width: 1; font-family: sans-serif; padding: 0em 0.1em 0em 0.1em; background: #e0e0e0;
+    cursor:pointer; }
+
+    span.l { color: red; font-weight: bold; }
+
+    a.mapnode:link {text-decoration: none; color: black; }
+    a.mapnode:visited {text-decoration: none; color: black; }
+    a.mapnode:active {text-decoration: none; color: black; }
+    a.mapnode:hover {text-decoration: none; color: black; background: #eeeee0; }
+
+</style>
+<!-- ^ Position is not set to relative / absolute here because of Mozilla -->
+</head>
+<body>
+
+<script type="text/javascript">
+   // Here we implement folding. It works fine with MSIE5.5, MSIE6.0 and
+   // Mozilla 0.9.6.
+
+   if (document.layers) {
+      //Netscape 4 specific code
+      pre = 'document.';
+      post = ''; }
+   if (document.getElementById) {
+      //Netscape 6 specific code
+      pre = 'document.getElementById("';
+      post = '").style'; }
+   if (document.all) {
+      //IE4+ specific code
+      pre = 'document.all.';
+      post = '.style'; }
+
+function layer_exists(layer) {
+   try {
+      eval(pre + layer + post);
+      return true; }
+   catch (error) {
+      return false; }}
+
+function show_layer(layer) {
+   eval(pre + layer + post).position = 'relative'; 
+   eval(pre + layer + post).visibility = 'visible'; }
+
+function hide_layer(layer) {
+   eval(pre + layer + post).visibility = 'hidden';
+   eval(pre + layer + post).position = 'absolute'; }
+
+function hide_folder(folder) {
+    hide_folding_layer(folder)
+    show_layer('show'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function show_folder(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_layer('show'+folder+'_'+i); }
+}
+function show_folder_completely(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+
+
+function hide_folding_layer(folder) {
+   var i;
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folding_layer(folder+'_'+i); }
+
+   hide_layer('hide'+folder);
+   hide_layer('show'+folder);
+   hide_layer('fold'+folder);
+
+   scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function fold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folder(folder+'_'+i); }
+}
+
+function unfold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+</script>
+<SPAN class="foldspecial" onclick="fold_document()">All +</SPAN>
+<SPAN class="foldspecial" onclick="unfold_document()">All -</SPAN>
+<p>
+    <h1>Versione Breve dell'ICF</h1>
+    
+    <span style="color: #0033ff; font-size: 16pt; ">ICF short version
+    <p>Cliccare sui pulsanti "+" e "-" per espandere le categorie</p>
+        <p>
+      Per poter ottenere il testo in inglese del codice ifc dal sito ufficiale basta aggiungere
+    </p>
+        <br>
+        <p>
+      il codice icf in coda all'url <i>http://apps.who.int/classifications/icfbrowser/Browse.aspx?code=</i>
+    </p>
+    <p>
+      Es. per ottenere la definizione del capitolo d8
+    </p>
+    <p>
+      http://apps.who.int/classifications/icfbrowser/Browse.aspx?code=d8
+    </p>
+    <p>
+      oppure per la definizione della voce d810
+    </p>
+    <p>
+      http://apps.who.int/classifications/icfbrowser/Browse.aspx?code=d810
+    </p>
+    <p>
+      e cos&#236; via.
+    </p>
+  </span>
+<ul><li><span id="show1_1" class="foldclosed" onClick="show_folder('1_1')" style="POSITION: absolute">+</span> <span id="hide1_1" class="foldopened" onClick="hide_folder('1_1')">-</span>
+<span style="color: #00b439; font-size: 14pt; ">(b) Funzioni Corporee
+    <p>
+      <font size="1"><b>Qualificatore</b>&#160;generico con scala negativa, usato per indicare </font>
+    </p>
+    <p>
+      <font size="1">l&#8217;estensione o la gravit&#224; di una menomazione: </font>
+    </p>
+    <table style="border-top-width: 0; width: 80%; border-top-style: solid; border-right-style: solid; border-bottom-width: 0; border-right-width: 0; border-bottom-style: solid; border-left-width: 0; border-left-style: solid" border="0">
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>0</b>&#160;- NESSUNA menomazione </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">(assente, trascurabile...) 0-4% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>1</b>&#160;- menomazione LIEVE </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">(leggera, piccola...) 5-24% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>2</b>&#160;- menomazione MEDIA </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">(moderata, discreta...) 25-49% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>3</b>&#160;- menomazione GRAVE </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">(notevole, estrema...) 50-95% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>4</b>&#160;- menomazione COMPLETA </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">(totale...) 96-100% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>8</b> </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">non specificato </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>9</b> </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">non applicabile </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p>
+      
+    </p>
+  </span>
+<ul id="fold1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000; font-size: 12pt; ">(b1) Funzioni Mentali</span>
+<ul><li>(b110-b139) Funzioni mentali Globali</span>
+<ul><li>b110 Funzioni della coscienza</span>
+
+</li>
+<li>b114 Funzioni dell&#x2019;orientamento</span>
+
+</li>
+<li>b117 Funzioni intellettive</span>
+
+</li>
+<li>b122 Funzioni psicosociali globali</span>
+
+</li>
+<li>b126 Funzioni del temperamento e della personalit&#xe0;</span>
+
+</li>
+<li>b130 Funzioni dell&#x2019;energia e delle pulsioni</span>
+
+</li>
+<li>b130 Funzioni dell&#x2019;energia e delle pulsioni</span>
+
+</li>
+<li>b139 Funzioni mentali globali, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_1" class="foldclosed" onClick="show_folder('1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_1_1" class="foldopened" onClick="hide_folder('1_1_1')">-</span>
+(b140-b189) Funzioni mentali specifiche</span>
+<ul id="fold1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>b140 Funzioni dell&#x2019;attenzione</span>
+
+</li>
+<li>b144 Funzioni della memoria</span>
+
+</li>
+<li>b147 Funzioni psicomotorie</span>
+
+</li>
+<li>b152 Funzioni emozionali</span>
+
+</li>
+<li>b156 Funzioni percettive</span>
+
+</li>
+<li>b160 Funzioni del pensiero</span>
+
+</li>
+<li>b164 Funzioni cognitive di livello superiore</span>
+
+</li>
+<li>b167 Funzioni mentali del linguaggio</span>
+
+</li>
+<li>b172 Funzioni di calcolo</span>
+
+</li>
+<li>b176 Funzione mentale di sequenza dei movimenti complessi</span>
+
+</li>
+<li>b180 Funzioni dell&#x2019;esperienza del s&#xe9; e del tempo</span>
+
+</li>
+<li>b189 Funzioni mentali specifiche, altro specificato e non specificato</span>
+
+</li>
+<li>b198 Funzioni mentali, altro specificato</span>
+
+</li>
+<li>b199 Funzioni mentali, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_2" class="foldclosed" onClick="show_folder('1_1_2')" style="POSITION: absolute">+</span> <span id="hide1_1_2" class="foldopened" onClick="hide_folder('1_1_2')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(b2) Funzioni sensoriali e dolore</span>
+<ul id="fold1_1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_2_1" class="foldclosed" onClick="show_folder('1_1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_1_2_1" class="foldopened" onClick="hide_folder('1_1_2_1')">-</span>
+(b210-b229) Funzioni visive e correlate</span>
+<ul id="fold1_1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li>b210 Funzioni della vista</span>
+
+</li>
+<li>b215 Funzioni delle strutture adiacenti all&#x2019;occhio</span>
+
+</li>
+<li>b220 Sensazioni associate all&#x2019;occhio e alle strutture adiacenti</span>
+
+</li>
+<li>b229 Funzioni della vista e correlate, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_2_2" class="foldclosed" onClick="show_folder('1_1_2_2')" style="POSITION: absolute">+</span> <span id="hide1_1_2_2" class="foldopened" onClick="hide_folder('1_1_2_2')">-</span>
+(b230-b249) Funzioni uditive e vestibolari</span>
+<ul id="fold1_1_2_2" style="POSITION: relative; VISIBILITY: visible;"><li>b230 Funzioni uditive</span>
+
+</li>
+<li>b235 Funzioni vestibolari</span>
+
+</li>
+<li>b240 Sensazioni associate alla funzione uditiva e vestibolare</span>
+
+</li>
+<li>b249 Funzioni uditive e vestibolari, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_2_3" class="foldclosed" onClick="show_folder('1_1_2_3')" style="POSITION: absolute">+</span> <span id="hide1_1_2_3" class="foldopened" onClick="hide_folder('1_1_2_3')">-</span>
+(b250-b279) Ulteriori funzioni sensoriali</span>
+<ul id="fold1_1_2_3" style="POSITION: relative; VISIBILITY: visible;"><li>b250 Funzione del gusto</span>
+
+</li>
+<li>b255 Funzione dell&#x2019;olfatto</span>
+
+</li>
+<li>b260 Funzione propriocettiva</span>
+
+</li>
+<li>b265 Funzione del tatto</span>
+
+</li>
+<li>b270 Funzioni sensoriali correlate alla temperatura e ad altri stimoli</span>
+
+</li>
+<li>b279 Ulteriori funzioni sensoriali, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_2_4" class="foldclosed" onClick="show_folder('1_1_2_4')" style="POSITION: absolute">+</span> <span id="hide1_1_2_4" class="foldopened" onClick="hide_folder('1_1_2_4')">-</span>
+(b280-b289) Dolore</span>
+<ul id="fold1_1_2_4" style="POSITION: relative; VISIBILITY: visible;"><li>b280 Sensazione di dolore</span>
+
+</li>
+<li>b289 Sensazione di dolore, altro specificato e non specificato</span>
+
+</li>
+<li>b298 Funzioni sensoriali e dolore, altro specificato</span>
+
+</li>
+<li>b299 Funzioni sensoriali e dolore, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_3" class="foldclosed" onClick="show_folder('1_1_3')" style="POSITION: absolute">+</span> <span id="hide1_1_3" class="foldopened" onClick="hide_folder('1_1_3')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(b3) Funzioni della voce e dell'eloquio</span>
+<ul id="fold1_1_3" style="POSITION: relative; VISIBILITY: visible;"><li>b310 Funzioni della voce</span>
+
+</li>
+<li>b320 Funzioni dell&#x2019;articolazione della voce</span>
+
+</li>
+<li>b330 Funzioni della fluidit&#xe0; e del ritmo dell&#x2019;eloquio</span>
+
+</li>
+<li>b340 Funzioni di vocalizzazione alternativa</span>
+
+</li>
+<li>b398 Funzioni della voce e dell&#x2019;eloquio, altro specificato</span>
+
+</li>
+<li>b399 Funzioni della voce e dell&#x2019;eloquio, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_4" class="foldclosed" onClick="show_folder('1_1_4')" style="POSITION: absolute">+</span> <span id="hide1_1_4" class="foldopened" onClick="hide_folder('1_1_4')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(b4) Funzioni dei sistemi cardiovascolare, ematologico, immunologico e dell&#x2019;apparato respiratorio</span>
+<ul id="fold1_1_4" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_4_1" class="foldclosed" onClick="show_folder('1_1_4_1')" style="POSITION: absolute">+</span> <span id="hide1_1_4_1" class="foldopened" onClick="hide_folder('1_1_4_1')">-</span>
+Funzioni del sistema cardiovascolare (b410-b429)</span>
+<ul id="fold1_1_4_1" style="POSITION: relative; VISIBILITY: visible;"><li>b410 Funzioni del cuore</span>
+
+</li>
+<li>b415 Funzioni dei vasi sanguigni</span>
+
+</li>
+<li>b420 Funzioni della pressione sanguigna</span>
+
+</li>
+<li>b429 Funzioni del sistema cardiovascolare, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_4_2" class="foldclosed" onClick="show_folder('1_1_4_2')" style="POSITION: absolute">+</span> <span id="hide1_1_4_2" class="foldopened" onClick="hide_folder('1_1_4_2')">-</span>
+Funzioni dei sistemi ematologico e immunologico (b430-b439)</span>
+<ul id="fold1_1_4_2" style="POSITION: relative; VISIBILITY: visible;"><li>b430 Funzioni del sistema ematologico</span>
+
+</li>
+<li>b435 Funzioni del sistema immunologico</span>
+
+</li>
+<li>b439 Funzioni dei sistemi ematologico e immunologico, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_4_3" class="foldclosed" onClick="show_folder('1_1_4_3')" style="POSITION: absolute">+</span> <span id="hide1_1_4_3" class="foldopened" onClick="hide_folder('1_1_4_3')">-</span>
+Funzioni dell&#x2019;apparato respiratorio (b440-b449)</span>
+<ul id="fold1_1_4_3" style="POSITION: relative; VISIBILITY: visible;"><li>b440 Funzioni respiratorie</span>
+
+</li>
+<li>b445 Funzioni del muscolo respiratorio</span>
+
+</li>
+<li>b449 Funzioni dell&#x2019;apparato respiratorio, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_4_4" class="foldclosed" onClick="show_folder('1_1_4_4')" style="POSITION: absolute">+</span> <span id="hide1_1_4_4" class="foldopened" onClick="hide_folder('1_1_4_4')">-</span>
+Ulteriori funzioni e sensazioni del sistema cardiovascolare e dell&#x2019;apparato respiratorio (b450-b469)</span>
+<ul id="fold1_1_4_4" style="POSITION: relative; VISIBILITY: visible;"><li><p>b450 Ulteriori funzioni respiratorie</span>
+<p>b455 Funzioni di tolleranza dell&#x2019;esercizio fisico</span>
+<p>b460 Sensazioni associate alle funzioni cardiovascolare e respiratoria</span>
+<p>b469 Ulteriori funzioni e sensazioni del sistema cardiovascolare e dell&#x2019;apparato respiratorio, altro specificato e non specificato</span>
+<p>b498 Funzioni dei sistemi cardiovascolare, ematologico, immunologico e dell&#x2019;apparato respiratorio, altro specificato</span>
+<p>b499 Funzioni dei sistemi cardiovascolare, ematologico, immunologico e dell&#x2019;apparato respiratorio, non specificato</span>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_5" class="foldclosed" onClick="show_folder('1_1_5')" style="POSITION: absolute">+</span> <span id="hide1_1_5" class="foldopened" onClick="hide_folder('1_1_5')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(b5) Funzioni dell&#x2019;apparato digerente e dei sistemi metabolico ed endocrino</span>
+<ul id="fold1_1_5" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_5_1" class="foldclosed" onClick="show_folder('1_1_5_1')" style="POSITION: absolute">+</span> <span id="hide1_1_5_1" class="foldopened" onClick="hide_folder('1_1_5_1')">-</span>
+Funzioni correlate all&#x2019;apparato digerente (b510-b539)</span>
+<ul id="fold1_1_5_1" style="POSITION: relative; VISIBILITY: visible;"><li>b510 Funzioni di ingestione</span>
+
+</li>
+<li>b515 Funzioni di digestione</span>
+
+</li>
+<li>b520 Funzioni di assimilazione</span>
+
+</li>
+<li>b525 Funzioni di defecazione</span>
+
+</li>
+<li>b530 Funzioni di mantenimento del peso</span>
+
+</li>
+<li>b535 Sensazioni associate all&#x2019;apparato digerente</span>
+
+</li>
+<li>b539 Funzioni correlate all&#x2019;apparato digerente, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_5_2" class="foldclosed" onClick="show_folder('1_1_5_2')" style="POSITION: absolute">+</span> <span id="hide1_1_5_2" class="foldopened" onClick="hide_folder('1_1_5_2')">-</span>
+Funzioni correlate al metabolismo e al sistema endocrino (b540-b559)</span>
+<ul id="fold1_1_5_2" style="POSITION: relative; VISIBILITY: visible;"><li>b540 Funzioni metaboliche generali</span>
+
+</li>
+<li>b545 Funzioni del bilancio idrico, minerale ed elettrolitico</span>
+
+</li>
+<li>b550 Funzioni di termoregolazione</span>
+
+</li>
+<li>b555 Funzioni delle ghiandole endocrine</span>
+
+</li>
+<li>b559 Funzioni correlate al metabolismo e al sistema endocrino, altro specificato e non specificato</span>
+
+</li>
+<li>b598 Funzioni dell&#x2019;apparato digerente e dei sistemi metabolico ed endocrino, altro specificato</span>
+
+</li>
+<li>b599 Funzioni dell&#x2019;apparato digerente e dei sistemi metabolico ed endocrino, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_6" class="foldclosed" onClick="show_folder('1_1_6')" style="POSITION: absolute">+</span> <span id="hide1_1_6" class="foldopened" onClick="hide_folder('1_1_6')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(b6) Funzioni genitourinarie e riproduttive</span>
+<ul id="fold1_1_6" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_6_1" class="foldclosed" onClick="show_folder('1_1_6_1')" style="POSITION: absolute">+</span> <span id="hide1_1_6_1" class="foldopened" onClick="hide_folder('1_1_6_1')">-</span>
+Funzioni urinarie (b610-b639)</span>
+<ul id="fold1_1_6_1" style="POSITION: relative; VISIBILITY: visible;"><li>b610 Funzioni urinarie escretorie</span>
+
+</li>
+<li>b620 Funzioni urinarie</span>
+
+</li>
+<li>b630 Sensazioni associate alle funzioni urinarie</span>
+
+</li>
+<li>b639 Funzioni urinarie, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_6_2" class="foldclosed" onClick="show_folder('1_1_6_2')" style="POSITION: absolute">+</span> <span id="hide1_1_6_2" class="foldopened" onClick="hide_folder('1_1_6_2')">-</span>
+Funzioni genitali e riproduttive (b640-b679)</span>
+<ul id="fold1_1_6_2" style="POSITION: relative; VISIBILITY: visible;"><li>b640 Funzioni sessuali</span>
+
+</li>
+<li>b650 Funzioni mestruali</span>
+
+</li>
+<li>b660 Funzioni della procreazione</span>
+
+</li>
+<li>b670 Sensazioni associate alle funzioni genitali e riproduttive</span>
+
+</li>
+<li>b679 Funzioni genitali e riproduttive, altro specificato e non specificato</span>
+
+</li>
+<li>b698 Funzioni genitourinarie e riproduttive, altro specificato</span>
+
+</li>
+<li>b699 Funzioni genitourinarie e riproduttive, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_7" class="foldclosed" onClick="show_folder('1_1_7')" style="POSITION: absolute">+</span> <span id="hide1_1_7" class="foldopened" onClick="hide_folder('1_1_7')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(b7) Funzioni neuro-muscoloscheletriche e correlate al movimento</span>
+<ul id="fold1_1_7" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_7_1" class="foldclosed" onClick="show_folder('1_1_7_1')" style="POSITION: absolute">+</span> <span id="hide1_1_7_1" class="foldopened" onClick="hide_folder('1_1_7_1')">-</span>
+Funzioni delle articolazioni e delle ossa (b710-b729)</span>
+<ul id="fold1_1_7_1" style="POSITION: relative; VISIBILITY: visible;"><li>b710 Funzioni della mobilit&#xe0; dell&#x2019;articolazione</span>
+
+</li>
+<li>b715 Funzioni della stabilit&#xe0; dell&#x2019;articolazione</span>
+
+</li>
+<li>b720 Funzioni della mobilit&#xe0; dell&#x2019;osso</span>
+
+</li>
+<li>b729 Funzioni delle articolazioni e delle ossa, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_7_2" class="foldclosed" onClick="show_folder('1_1_7_2')" style="POSITION: absolute">+</span> <span id="hide1_1_7_2" class="foldopened" onClick="hide_folder('1_1_7_2')">-</span>
+Funzioni muscolari (b730-b749)</span>
+<ul id="fold1_1_7_2" style="POSITION: relative; VISIBILITY: visible;"><li>b730 Funzioni della forza muscolare</span>
+
+</li>
+<li>b735 Funzioni del tono muscolare</span>
+
+</li>
+<li>b740 Funzioni della resistenza muscolare</span>
+
+</li>
+<li>b749 Funzioni muscolari, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_7_3" class="foldclosed" onClick="show_folder('1_1_7_3')" style="POSITION: absolute">+</span> <span id="hide1_1_7_3" class="foldopened" onClick="hide_folder('1_1_7_3')">-</span>
+Funzioni del movimento (b750-b789)</span>
+<ul id="fold1_1_7_3" style="POSITION: relative; VISIBILITY: visible;"><li>b750 Funzioni del riflesso motorio</span>
+
+</li>
+<li>b755 Funzioni della reazione di movimento involontario</span>
+
+</li>
+<li>b760 Funzioni di controllo del movimento volontario</span>
+
+</li>
+<li>b765 Funzioni del movimento involontario</span>
+
+</li>
+<li>b770 Funzioni del pattern dell&#x2019;andatura</span>
+
+</li>
+<li>b780 Sensazioni correlate alle funzioni muscolari e del movimento</span>
+
+</li>
+<li>b789 Funzioni del movimento, altro specificato e non specificato</span>
+
+</li>
+<li>b798 Funzioni neuro-muscoloscheletriche e correlate al movimento, altro specificato</span>
+
+</li>
+<li>b799 Funzioni neuro-muscoloscheletriche e correlate al movimento, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_8" class="foldclosed" onClick="show_folder('1_1_8')" style="POSITION: absolute">+</span> <span id="hide1_1_8" class="foldopened" onClick="hide_folder('1_1_8')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(b8) Funzioni della cute e delle strutture correlate</span>
+<ul id="fold1_1_8" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_8_1" class="foldclosed" onClick="show_folder('1_1_8_1')" style="POSITION: absolute">+</span> <span id="hide1_1_8_1" class="foldopened" onClick="hide_folder('1_1_8_1')">-</span>
+Funzioni della cute (b810-b849)</span>
+<ul id="fold1_1_8_1" style="POSITION: relative; VISIBILITY: visible;"><li>b810 Funzioni protettive della cute</span>
+
+</li>
+<li>b820 Funzioni di riparazione della cute</span>
+
+</li>
+<li>b830 Altre funzioni della cute</span>
+
+</li>
+<li>b840 Sensazione correlata alla cute</span>
+
+</li>
+<li>b849 Funzioni della cute, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_8_2" class="foldclosed" onClick="show_folder('1_1_8_2')" style="POSITION: absolute">+</span> <span id="hide1_1_8_2" class="foldopened" onClick="hide_folder('1_1_8_2')">-</span>
+Funzioni dei peli, dei capelli e delle unghie (b850-b869)</span>
+<ul id="fold1_1_8_2" style="POSITION: relative; VISIBILITY: visible;"><li>b850 Funzioni dei peli e dei capelli</span>
+
+</li>
+<li>b860 Funzioni delle unghie</span>
+
+</li>
+<li>b869 Funzioni dei peli, dei capelli e delle unghie, altro specificato e non specificato</span>
+
+</li>
+<li>b898 Funzioni della cute e delle strutture correlate, altro specificato</span>
+
+</li>
+<li>b899 Funzioni della cute e delle strutture correlate, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2" class="foldclosed" onClick="show_folder('1_2')" style="POSITION: absolute">+</span> <span id="hide1_2" class="foldopened" onClick="hide_folder('1_2')">-</span>
+<span style="color: #00b439; font-size: 14pt; ">(s) Strutture Corporee
+    <p>
+      <b><font size="1">In questa sezione vengono utilizzati tre qualificatori (in sequenza, dopo il codice ICF) </font></b>
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      <font size="1"><b>Primo Qualificatore</b>&#160;generico con scala negativa, usato per indicare l&#8217;estensione o la gravit&#224; di una menomazione </font>
+    </p>
+    <p>
+      <font size="1"><b>Secondo qualificatore</b>&#160;</font>
+    </p>
+    <p>
+      <font size="1">Usato per indicare la natura del cambiamento nella rispettiva struttura corporea: </font>
+    </p>
+    <p>
+      <font size="1"><b>Terzo qualificatore</b>&#160;(suggerito) </font>
+    </p>
+    <p>
+      
+    </p>
+    <table style="border-top-width: 0; width: 80%; border-top-style: solid; border-right-style: solid; border-bottom-width: 0; border-right-width: 0; border-bottom-style: solid; border-left-width: 0; border-left-style: solid" border="0">
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1; text-align: center">
+            <b>Menomazione (m) </b>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; text-align: center; margin-bottom: 1">
+            <b>Natura del cambiamento (n) </b>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; text-align: center; margin-bottom: 1">
+            <b>Localizzazione (l)</b>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.<b>0</b>&#160;- NESSUNA (assente, trascurabile...) 0-4% </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.m<b>0 </b>nessun cambiamento nella struttura </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.mn<b>0</b>&#160;pi&#249; di una regione </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.<b>1</b>&#160;- LIEVE (leggera, piccola...) 5-24% </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.m<b>1</b>&#160;assenza totale </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.mn<b>1</b>&#160;destra </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.<b>2</b>&#160;- MEDIA (moderata, discreta...) 25-49% </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.m<b>2</b>&#160;assenza parziale </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.mn<b>2 </b>sinistra </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.<b>3</b>&#160;- GRAVE (notevole, estrema...) 50-95% </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.m<b>3</b>&#160;parte in eccesso </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.mn<b>3 </b>entrambi i lati </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.<b>4</b>&#160;- COMPLETA (totale...) 96-100% </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.m<b>4</b>&#160;dimensioni anormali </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.mn<b>4 </b>frontale </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.m<b>5</b>&#160;discontinuit&#224; </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.mn<b>5 </b>dorsale </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.m<b>6</b>&#160;posizione deviante </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.mn<b>6 </b>prossimale </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.m<b>7</b>&#160;cambiamenti qualitativi nella struttura, incluso l&#8217;accumulo di fluidi </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.mn<b>7 </b>distale</font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.<b>8</b>&#160;non specificato</font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.m<b>8</b>&#160;non specificato </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.mn<b>8 </b>non specificato</font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.<b>9</b>&#160;non applicabile </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.m<b>9</b>&#160;non applicabile </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.mn<b>9 </b>non applicabile</font>
+          </p>
+        </td>
+      </tr>
+    </table>
+  </span>
+<ul id="fold1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_2_1" class="foldclosed" onClick="show_folder('1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1" class="foldopened" onClick="hide_folder('1_2_1')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(s1) Strutture del sistema nervoso</span>
+<ul id="fold1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li>s110 Struttura del cervello</span>
+
+</li>
+<li>s120 Midollo spinale e strutture correlate</span>
+
+</li>
+<li>s130 Struttura delle meningi</span>
+
+</li>
+<li>s140 Struttura del sistema nervoso simpatico</span>
+
+</li>
+<li>s150 Struttura del sistema nervoso parasimpatico</span>
+
+</li>
+<li>s198 Struttura del sistema nervoso, altro specificato</span>
+
+</li>
+<li>s199 Struttura del sistema nervoso, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2_2" class="foldclosed" onClick="show_folder('1_2_2')" style="POSITION: absolute">+</span> <span id="hide1_2_2" class="foldopened" onClick="hide_folder('1_2_2')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(s2) Occhio, orecchio e strutture correlate</span>
+<ul id="fold1_2_2" style="POSITION: relative; VISIBILITY: visible;"><li>s210 Struttura della cavit&#xe0; orbitaria</span>
+
+</li>
+<li>s220 Struttura del bulbo oculare</span>
+
+</li>
+<li>s230 Strutture adiacenti all&#x2019;occhio</span>
+
+</li>
+<li>s240 Struttura dell&#x2019;orecchio esterno</span>
+
+</li>
+<li>s250 Struttura dell&#x2019;orecchio medio</span>
+
+</li>
+<li>s260 Struttura dell&#x2019;orecchio interno</span>
+
+</li>
+<li>s298 Occhio, orecchio e strutture correlate, altro specificato</span>
+
+</li>
+<li>s299 Occhio, orecchio e strutture correlate, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2_3" class="foldclosed" onClick="show_folder('1_2_3')" style="POSITION: absolute">+</span> <span id="hide1_2_3" class="foldopened" onClick="hide_folder('1_2_3')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(s3) Strutture coinvolte nella voce e nell&#x2019;eloquio</span>
+<ul id="fold1_2_3" style="POSITION: relative; VISIBILITY: visible;"><li>s310 Struttura del naso</span>
+
+</li>
+<li>s320 Struttura della bocca</span>
+
+</li>
+<li>s330 Struttura della faringe</span>
+
+</li>
+<li>s340 Struttura della laringe</span>
+
+</li>
+<li>s398 Strutture coinvolte nella voce e nell&#x2019;eloquio, altro specificato</span>
+
+</li>
+<li>s399 Strutture coinvolte nella voce e nell&#x2019;eloquio, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2_4" class="foldclosed" onClick="show_folder('1_2_4')" style="POSITION: absolute">+</span> <span id="hide1_2_4" class="foldopened" onClick="hide_folder('1_2_4')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(s4) Strutture dei sistemi cardiovascolare, immunologico e dell&#x2019;apparato respiratorio</span>
+<ul id="fold1_2_4" style="POSITION: relative; VISIBILITY: visible;"><li><p>s410 Struttura del sistema cardiovascolare</span>
+<p>s420 Struttura del sistema immunitario</span>
+<p>s430 Struttura dell&#x2019;apparato respiratorio</span>
+<p>s498 Strutture dei sistemi cardiovascolare, immunologico e dell&#x2019;apparato respiratorio, altro specificato</span>
+<p>s499 Strutture dei sistemi cardiovascolare, immunologico e dell&#x2019;apparato respiratorio, non specificato</span>
+</li>
+</ul>
+</li>
+<li><span id="show1_2_5" class="foldclosed" onClick="show_folder('1_2_5')" style="POSITION: absolute">+</span> <span id="hide1_2_5" class="foldopened" onClick="hide_folder('1_2_5')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(s5) Strutture correlate all&#x2019;apparato digerente e ai sistemi metabolico ed endocrino</span>
+<ul id="fold1_2_5" style="POSITION: relative; VISIBILITY: visible;"><li><p>s510 Struttura delle ghiandole salivari</span>
+<p>s520 Struttura dell&#x2019;esofago</span>
+<p>s530 Struttura dello stomaco</span>
+<p>s540 Struttura dell&#x2019;intestino</span>
+<p>s550 Struttura del pancreas</span>
+<p>s560 Struttura del fegato</span>
+<p>s570 Struttura della cistifellea e dei dotti biliari</span>
+<p>s580 Struttura delle ghiandole endocrine</span>
+<p>s598 Strutture correlate all&#x2019;apparato digerente e ai sistemi metabolico ed endocrino, altro specificato</span>
+<p>s599 Strutture correlate all&#x2019;apparato digerente e ai sistemi metabolico ed endocrino, non specificato</span>
+</li>
+</ul>
+</li>
+<li><span id="show1_2_6" class="foldclosed" onClick="show_folder('1_2_6')" style="POSITION: absolute">+</span> <span id="hide1_2_6" class="foldopened" onClick="hide_folder('1_2_6')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(s6) Strutture correlate ai sistemi genitourinario e riproduttivo</span>
+<ul id="fold1_2_6" style="POSITION: relative; VISIBILITY: visible;"><li>s610 Struttura del sistema urinario</span>
+
+</li>
+<li>s620 Struttura del pavimento pelvico</span>
+
+</li>
+<li>s630 Struttura del sistema riproduttivo</span>
+
+</li>
+<li>s698 Strutture correlate ai sistemi genitourinario e riproduttivo, altro specificato</span>
+
+</li>
+<li>s699 Strutture correlate ai sistemi genitourinario e riproduttivo, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2_7" class="foldclosed" onClick="show_folder('1_2_7')" style="POSITION: absolute">+</span> <span id="hide1_2_7" class="foldopened" onClick="hide_folder('1_2_7')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(s7) Strutture correlate al movimento</span>
+<ul id="fold1_2_7" style="POSITION: relative; VISIBILITY: visible;"><li>s710 Struttura della regione del capo e del collo</span>
+
+</li>
+<li>s720 Struttura della regione della spalla</span>
+
+</li>
+<li>s730 Struttura dell&#x2019;arto superiore</span>
+
+</li>
+<li>s740 Struttura della regione pelvica</span>
+
+</li>
+<li>s750 Struttura dell&#x2019;arto inferiore</span>
+
+</li>
+<li>s760 Struttura del tronco</span>
+
+</li>
+<li>s770 Ulteriori strutture muscoloscheletriche correlate al movimento</span>
+
+</li>
+<li>s798 Strutture correlate al movimento, altro specificato</span>
+
+</li>
+<li>s799 Strutture correlate al movimento, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2_8" class="foldclosed" onClick="show_folder('1_2_8')" style="POSITION: absolute">+</span> <span id="hide1_2_8" class="foldopened" onClick="hide_folder('1_2_8')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(s8) Cute e strutture correlate</span>
+<ul id="fold1_2_8" style="POSITION: relative; VISIBILITY: visible;"><li>s810 Struttura delle aree della cute</span>
+
+</li>
+<li>s820 Struttura delle ghiandole della cute</span>
+
+</li>
+<li>s830 Struttura delle unghie</span>
+
+</li>
+<li>s840 Struttura dei peli e dei capelli</span>
+
+</li>
+<li>s898 Cute e strutture correlate, altro specificato</span>
+
+</li>
+<li>s899 Cute e strutture correlate, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3" class="foldclosed" onClick="show_folder('1_3')" style="POSITION: absolute">+</span> <span id="hide1_3" class="foldopened" onClick="hide_folder('1_3')">-</span>
+<span style="color: #00b439; font-size: 14pt; ">(d) Attivit&#xe0; e Partecipazione
+    <p>
+      <font size="1">Definizioni: </font>
+    </p>
+    <p>
+      <font size="1">L&#8217;<b>attivit&#224;</b>&#160;&#232; l&#8217;esecuzione di un compito o di un&#8217;azione da parte di un individuo. </font>
+    </p>
+    <p>
+      <font size="1">La <b>partecipazione</b>&#160;&#232; il coinvolgimento in una situazione di vita. </font>
+    </p>
+    <p>
+      <font size="1">Le <b>limitazioni dell&#8217;attivit&#224;</b>&#160;sono le difficolt&#224; che un individuo pu&#242; incontrare nello svolgere delle attivit&#224;. </font>
+    </p>
+    <p>
+      <font size="1">Le <b>restrizioni alla partecipazione</b>&#160;sono i problemi che un individuo pu&#242; sperimentare nel coinvolgimento nelle situazioni di vita. </font>
+    </p>
+    <p>
+      <font size="1">--- </font>
+    </p>
+    <p>
+      <font size="1">In questa sezione vengono utilizzati DUE qualificatori </font>
+    </p>
+    <p>
+      <font size="1"><b>1) Performance </b>descrive quello che un individuo fa nel suo ambiente attuale </font>
+    </p>
+    <p>
+      <font size="1"><b>2) Capacit&#224;</b>&#160;descrive invece l&#8217;abilit&#224; dell&#8217;individuo nell&#8217;eseguire un compito o un&#8217;azione </font>
+    </p>
+    <p>
+      <font size="1">entrambi vengono utilizzati con la seguente scala </font>
+    </p>
+    <p>
+      
+    </p>
+    <table style="border-top-width: 0; width: 80%; border-top-style: solid; border-right-style: solid; border-bottom-width: 0; border-right-width: 0; border-bottom-style: solid; border-left-width: 0; border-left-style: solid" border="0">
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>0</b>&#160;- NESSUNA </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">(assente, trascurabile...) 0-4% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>1</b>&#160;- LIEVE </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">(leggera, piccola...) 5-24% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>2</b>&#160;- MEDIA </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">(moderata, discreta...) 25-49% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>3</b>&#160;- GRAVE </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">(notevole, estrema...) 50-95% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>4</b>&#160;- COMPLETA </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">(totale...) 96-100% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>8</b> </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">non specificato </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">xxx.<b>9</b> </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-top: 1; margin-bottom: 1; margin-right: 1; margin-left: 1">
+            <font size="1">non applicabile </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+  </span>
+<ul id="fold1_3" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_1" class="foldclosed" onClick="show_folder('1_3_1')" style="POSITION: absolute">+</span> <span id="hide1_3_1" class="foldopened" onClick="hide_folder('1_3_1')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(d1) Apprendimento e applicazione delle conoscenze</span>
+<ul id="fold1_3_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_1_1" class="foldclosed" onClick="show_folder('1_3_1_1')" style="POSITION: absolute">+</span> <span id="hide1_3_1_1" class="foldopened" onClick="hide_folder('1_3_1_1')">-</span>
+Esperienze sensoriali intenzionali (d110-d129)</span>
+<ul id="fold1_3_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>d110 Guardare</span>
+
+</li>
+<li>d115 Ascoltare</span>
+
+</li>
+<li>d120 Altre percezioni sensoriali intenzionali</span>
+
+</li>
+<li>d129 Esperienze sensoriali intenzionali, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_1_2" class="foldclosed" onClick="show_folder('1_3_1_2')" style="POSITION: absolute">+</span> <span id="hide1_3_1_2" class="foldopened" onClick="hide_folder('1_3_1_2')">-</span>
+Apprendimento di base (d130-d159)</span>
+<ul id="fold1_3_1_2" style="POSITION: relative; VISIBILITY: visible;"><li>d130 Copiare</span>
+
+</li>
+<li>d135 Ripetere</span>
+
+</li>
+<li>d140 Imparare a leggere</span>
+
+</li>
+<li>d145 Imparare a scrivere</span>
+
+</li>
+<li>d150 Imparare a calcolare</span>
+
+</li>
+<li>d155 Acquisizione di abilit&#xe0;</span>
+
+</li>
+<li>d159 Apprendimento di base, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_1_3" class="foldclosed" onClick="show_folder('1_3_1_3')" style="POSITION: absolute">+</span> <span id="hide1_3_1_3" class="foldopened" onClick="hide_folder('1_3_1_3')">-</span>
+Applicazione delle conoscenze (d160-d179)</span>
+<ul id="fold1_3_1_3" style="POSITION: relative; VISIBILITY: visible;"><li>d160 Focalizzare l&#x2019;attenzione</span>
+
+</li>
+<li>d163 Pensiero</span>
+
+</li>
+<li>d166 Lettura</span>
+
+</li>
+<li>d170 Scrittura</span>
+
+</li>
+<li>d172 Calcolo</span>
+
+</li>
+<li>d175 Risoluzione di problemi</span>
+
+</li>
+<li>d177 Prendere decisioni</span>
+
+</li>
+<li>d179 Applicazione delle conoscenze, altro specificato e non specificato</span>
+
+</li>
+<li>d198 Apprendimento e applicazione delle conoscenze, altro specificato</span>
+
+</li>
+<li>d199 Apprendimento e applicazione delle conoscenze, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2" class="foldclosed" onClick="show_folder('1_3_2')" style="POSITION: absolute">+</span> <span id="hide1_3_2" class="foldopened" onClick="hide_folder('1_3_2')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(d2) Compiti e richieste generali</span>
+<ul id="fold1_3_2" style="POSITION: relative; VISIBILITY: visible;"><li>d210 Intraprendere un compito singolo</span>
+
+</li>
+<li>d220 Intraprendere compiti articolati</span>
+
+</li>
+<li>d230 Eseguire la routine quotidiana</span>
+
+</li>
+<li>d240 Gestire la tensione e altre richieste di tipo psicologico</span>
+
+</li>
+<li>d298 Compiti e richieste generali, altro specificato</span>
+
+</li>
+<li>d299 Compiti e richieste generali, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_3" class="foldclosed" onClick="show_folder('1_3_3')" style="POSITION: absolute">+</span> <span id="hide1_3_3" class="foldopened" onClick="hide_folder('1_3_3')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(d3) Comunicazione</span>
+<ul id="fold1_3_3" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_3_1" class="foldclosed" onClick="show_folder('1_3_3_1')" style="POSITION: absolute">+</span> <span id="hide1_3_3_1" class="foldopened" onClick="hide_folder('1_3_3_1')">-</span>
+Comunicare - ricevere (d310-d329)</span>
+<ul id="fold1_3_3_1" style="POSITION: relative; VISIBILITY: visible;"><li>d310 Comunicare con - ricevere - messaggi verbali</span>
+
+</li>
+<li>d315 Comunicare con - ricevere - messaggi non verbali</span>
+
+</li>
+<li>d320 Comunicare con - ricevere - messaggi nel linguaggio dei segni</span>
+
+</li>
+<li>d325 Comunicare con - ricevere - messaggi scritti</span>
+
+</li>
+<li>d329 Comunicare - ricevere, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_3_2" class="foldclosed" onClick="show_folder('1_3_3_2')" style="POSITION: absolute">+</span> <span id="hide1_3_3_2" class="foldopened" onClick="hide_folder('1_3_3_2')">-</span>
+Comunicare - produrre (d330-d349)</span>
+<ul id="fold1_3_3_2" style="POSITION: relative; VISIBILITY: visible;"><li>d330 Parlare</span>
+
+</li>
+<li>d335 Produrre messaggi non verbali</span>
+
+</li>
+<li>d340 Produrre messaggi nel linguaggio dei segni</span>
+
+</li>
+<li>d345 Scrivere messaggi</span>
+
+</li>
+<li>d349 Comunicare - produrre, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_3_3" class="foldclosed" onClick="show_folder('1_3_3_3')" style="POSITION: absolute">+</span> <span id="hide1_3_3_3" class="foldopened" onClick="hide_folder('1_3_3_3')">-</span>
+Conversazione e uso di strumenti e tecniche di comunicazione (d350-d369)</span>
+<ul id="fold1_3_3_3" style="POSITION: relative; VISIBILITY: visible;"><li><p>d350 Conversazione</span>
+<p>d355 Discussione</span>
+<p>d360 Utilizzo di strumenti e tecniche di comunicazione</span>
+<p>d369 Conversazione e uso di strumenti e tecniche di comunicazione, altro specificato e non specificato</span>
+</li>
+</ul>
+</li>
+<li>d398 Comunicazione, altro specificato</span>
+
+</li>
+<li>d399 Comunicazione, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_4" class="foldclosed" onClick="show_folder('1_3_4')" style="POSITION: absolute">+</span> <span id="hide1_3_4" class="foldopened" onClick="hide_folder('1_3_4')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(d4) Mobilit&#xe0;</span>
+<ul id="fold1_3_4" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_4_1" class="foldclosed" onClick="show_folder('1_3_4_1')" style="POSITION: absolute">+</span> <span id="hide1_3_4_1" class="foldopened" onClick="hide_folder('1_3_4_1')">-</span>
+Cambiare e mantenere una posizione corporea (d410-d429)</span>
+<ul id="fold1_3_4_1" style="POSITION: relative; VISIBILITY: visible;"><li>d410 Cambiare la posizione corporea di base</span>
+
+</li>
+<li>d415 Mantenere una posizione corporea</span>
+
+</li>
+<li>d420 Trasferirsi</span>
+
+</li>
+<li>d429 Cambiare e mantenere una posizione corporea, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_4_2" class="foldclosed" onClick="show_folder('1_3_4_2')" style="POSITION: absolute">+</span> <span id="hide1_3_4_2" class="foldopened" onClick="hide_folder('1_3_4_2')">-</span>
+Trasportare, spostare e maneggiare oggetti (d430-d449)</span>
+<ul id="fold1_3_4_2" style="POSITION: relative; VISIBILITY: visible;"><li>d430 Sollevare e trasportare oggetti</span>
+
+</li>
+<li>d435 Spostare oggetti con gli arti inferiori</span>
+
+</li>
+<li>d440 Uso fine della mano</span>
+
+</li>
+<li>d445 Uso della mano e del braccio</span>
+
+</li>
+<li>d449 Trasportare, spostare e maneggiare oggetti, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_4_3" class="foldclosed" onClick="show_folder('1_3_4_3')" style="POSITION: absolute">+</span> <span id="hide1_3_4_3" class="foldopened" onClick="hide_folder('1_3_4_3')">-</span>
+Camminare e spostarsi (d450-d469)</span>
+<ul id="fold1_3_4_3" style="POSITION: relative; VISIBILITY: visible;"><li>d450 Camminare</span>
+
+</li>
+<li>d455 Spostarsi</span>
+
+</li>
+<li>d460 Spostarsi in diverse collocazioni</span>
+
+</li>
+<li>d465 Spostarsi usando apparecchiature/ausili</span>
+
+</li>
+<li>d469 Camminare e spostarsi, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_4_4" class="foldclosed" onClick="show_folder('1_3_4_4')" style="POSITION: absolute">+</span> <span id="hide1_3_4_4" class="foldopened" onClick="hide_folder('1_3_4_4')">-</span>
+Muoversi usando un mezzo di trasporto (d470-d489)</span>
+<ul id="fold1_3_4_4" style="POSITION: relative; VISIBILITY: visible;"><li>d470 Usare un mezzo di trasporto</span>
+
+</li>
+<li>d475 Guidare</span>
+
+</li>
+<li>d480 Cavalcare animali per farsi trasportare</span>
+
+</li>
+<li>d489 Muoversi usando un mezzo di trasporto, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li>d498 Mobilit&#xe0;, altro specificato</span>
+
+</li>
+<li>d499 Mobilit&#xe0;, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_5" class="foldclosed" onClick="show_folder('1_3_5')" style="POSITION: absolute">+</span> <span id="hide1_3_5" class="foldopened" onClick="hide_folder('1_3_5')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(d5) Cura della propria persona</span>
+<ul id="fold1_3_5" style="POSITION: relative; VISIBILITY: visible;"><li>d510 Lavarsi</span>
+
+</li>
+<li>d520 Prendersi cura di singole parti del corpo</span>
+
+</li>
+<li>d530 Bisogni corporali</span>
+
+</li>
+<li>d540 Vestirsi</span>
+
+</li>
+<li>d550 Mangiare</span>
+
+</li>
+<li>d560 Bere</span>
+
+</li>
+<li>d570 Prendersi cura della propria salute</span>
+
+</li>
+<li>d598 Cura della propria persona, altro specificato</span>
+
+</li>
+<li>d599 Cura della propria persona, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_6" class="foldclosed" onClick="show_folder('1_3_6')" style="POSITION: absolute">+</span> <span id="hide1_3_6" class="foldopened" onClick="hide_folder('1_3_6')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(d6) Vita domestica</span>
+<ul id="fold1_3_6" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_6_1" class="foldclosed" onClick="show_folder('1_3_6_1')" style="POSITION: absolute">+</span> <span id="hide1_3_6_1" class="foldopened" onClick="hide_folder('1_3_6_1')">-</span>
+Procurarsi i beni necessari (d610-d629)</span>
+<ul id="fold1_3_6_1" style="POSITION: relative; VISIBILITY: visible;"><li>d610 Procurarsi un posto in cui vivere</span>
+
+</li>
+<li>d620 Procurarsi beni e servizi</span>
+
+</li>
+<li>d629 Procurarsi i beni necessari, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_6_2" class="foldclosed" onClick="show_folder('1_3_6_2')" style="POSITION: absolute">+</span> <span id="hide1_3_6_2" class="foldopened" onClick="hide_folder('1_3_6_2')">-</span>
+Compiti casalinghi (d630-d649)</span>
+<ul id="fold1_3_6_2" style="POSITION: relative; VISIBILITY: visible;"><li>d630 Preparare pasti</span>
+
+</li>
+<li>d640 Fare i lavori di casa</span>
+
+</li>
+<li>d649 Compiti casalinghi, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_6_3" class="foldclosed" onClick="show_folder('1_3_6_3')" style="POSITION: absolute">+</span> <span id="hide1_3_6_3" class="foldopened" onClick="hide_folder('1_3_6_3')">-</span>
+Prendersi cura degli oggetti della casa e assistere gli altri (d650-d669)</span>
+<ul id="fold1_3_6_3" style="POSITION: relative; VISIBILITY: visible;"><li><p>d650 Prendersi cura degli oggetti della casa</span>
+<p>d660 Assistere gli altri</span>
+<p>d669 Prendersi cura degli oggetti della casa e assistere gli altri, altro specificato e non specificato</span>
+</li>
+</ul>
+</li>
+<li>d698 Vita domestica, altro specificato</span>
+
+</li>
+<li>d699 Vita domestica, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_7" class="foldclosed" onClick="show_folder('1_3_7')" style="POSITION: absolute">+</span> <span id="hide1_3_7" class="foldopened" onClick="hide_folder('1_3_7')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(d7) Interazioni e relazioni interpersonali</span>
+<ul id="fold1_3_7" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_7_1" class="foldclosed" onClick="show_folder('1_3_7_1')" style="POSITION: absolute">+</span> <span id="hide1_3_7_1" class="foldopened" onClick="hide_folder('1_3_7_1')">-</span>
+Interazioni interpersonali generali (d710-d729)</span>
+<ul id="fold1_3_7_1" style="POSITION: relative; VISIBILITY: visible;"><li>d710 Interazioni interpersonali semplici</span>
+
+</li>
+<li>d720 Interazioni interpersonali complesse</span>
+
+</li>
+<li>d729 Interazioni interpersonali generali, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_7_2" class="foldclosed" onClick="show_folder('1_3_7_2')" style="POSITION: absolute">+</span> <span id="hide1_3_7_2" class="foldopened" onClick="hide_folder('1_3_7_2')">-</span>
+Relazioni interpersonali particolari (d730-d779)</span>
+<ul id="fold1_3_7_2" style="POSITION: relative; VISIBILITY: visible;"><li>d730 Entrare in relazione con estranei</span>
+
+</li>
+<li>d740 Relazioni formali</span>
+
+</li>
+<li>d750 Relazioni sociali informali</span>
+
+</li>
+<li>d760 Relazioni familiari</span>
+
+</li>
+<li>d770 Relazioni intime</span>
+
+</li>
+<li>d779 Relazioni interpersonali particolari, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li>d798 Interazioni e relazioni interpersonali, altro specificato</span>
+
+</li>
+<li>d799 Interazioni e relazioni interpersonali, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_8" class="foldclosed" onClick="show_folder('1_3_8')" style="POSITION: absolute">+</span> <span id="hide1_3_8" class="foldopened" onClick="hide_folder('1_3_8')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(d8) Aree di vita principali</span>
+<ul id="fold1_3_8" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_8_1" class="foldclosed" onClick="show_folder('1_3_8_1')" style="POSITION: absolute">+</span> <span id="hide1_3_8_1" class="foldopened" onClick="hide_folder('1_3_8_1')">-</span>
+Istruzione (d810-d839)</span>
+<ul id="fold1_3_8_1" style="POSITION: relative; VISIBILITY: visible;"><li>d810 Istruzione informale</span>
+
+</li>
+<li>d815 Istruzione prescolastica</span>
+
+</li>
+<li>d820 Istruzione scolastica</span>
+
+</li>
+<li>d825 Formazione professionale</span>
+
+</li>
+<li>d830 Istruzione superiore</span>
+
+</li>
+<li>d839 Istruzione, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_8_2" class="foldclosed" onClick="show_folder('1_3_8_2')" style="POSITION: absolute">+</span> <span id="hide1_3_8_2" class="foldopened" onClick="hide_folder('1_3_8_2')">-</span>
+Lavoro e impiego (d840-d859)</span>
+<ul id="fold1_3_8_2" style="POSITION: relative; VISIBILITY: visible;"><li>d840 Apprendistato (addestramento al lavoro)</span>
+
+</li>
+<li>d845 Acquisire, conservare e lasciare un lavoro</span>
+
+</li>
+<li>d850 Lavoro retribuito</span>
+
+</li>
+<li>d855 Lavoro non retribuito</span>
+
+</li>
+<li>d859 Lavoro e impiego, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_8_3" class="foldclosed" onClick="show_folder('1_3_8_3')" style="POSITION: absolute">+</span> <span id="hide1_3_8_3" class="foldopened" onClick="hide_folder('1_3_8_3')">-</span>
+Vita economica (d860-d879)</span>
+<ul id="fold1_3_8_3" style="POSITION: relative; VISIBILITY: visible;"><li>d860 Transazioni economiche semplici</span>
+
+</li>
+<li>d865 Transazioni economiche complesse</span>
+
+</li>
+<li>d870 Autosufficienza economica</span>
+
+</li>
+<li>d879 Vita economica, altro specificato e non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li>d898 Aree di vita fondamentali, altro specificato</span>
+
+</li>
+<li>d899 Aree di vita fondamentali, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_9" class="foldclosed" onClick="show_folder('1_3_9')" style="POSITION: absolute">+</span> <span id="hide1_3_9" class="foldopened" onClick="hide_folder('1_3_9')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(d9) Vita sociale, civile e di comunit&#xe0;</span>
+<ul id="fold1_3_9" style="POSITION: relative; VISIBILITY: visible;"><li>d910 Vita nella comunit&#xe0;</span>
+
+</li>
+<li>d920 Ricreazione e tempo libero</span>
+
+</li>
+<li>d930 Religione e spiritualit&#xe0;</span>
+
+</li>
+<li>d940 Diritti umani</span>
+
+</li>
+<li>d950 Vita politica e cittadinanza</span>
+
+</li>
+<li>d998 Vita sociale, civile e di comunit&#xe0;, altro specificato</span>
+
+</li>
+<li>d999 Vita sociale, civile e di comunit&#xe0;, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4" class="foldclosed" onClick="show_folder('1_4')" style="POSITION: absolute">+</span> <span id="hide1_4" class="foldopened" onClick="hide_folder('1_4')">-</span>
+<span style="color: #00b439; font-size: 14pt; ">(e) Fattori Ambientali
+    <p>
+      <font size="1">I fattori ambientali devono essere codificati dal punto di vista della persona della quale si sta descrivendo la situazione. Ad esempio, marciapiedi senza scalino possono essere codificati come facilitatori per una persona che fa uso di sedia a rotelle ma come una barriera per un non vedente che non percepisce la differenza fra marciapiede e strada. </font>
+    </p>
+    <p>
+      <font size="1">--- </font>
+    </p>
+    <p>
+      <font size="1">Il sistema di qualificazione attualmente prevede un unico qualificatore (positivo o negativo), &#232; previsto ma non ancora sviluppato un secondo qualificatore. </font>
+    </p>
+    <table style="border-top-width: 0; width: 80%; border-top-style: solid; border-right-style: solid; border-bottom-width: 0; border-right-width: 0; border-bottom-style: solid; border-left-width: 0; border-left-style: solid" border="0">
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1; text-align: center">
+            <b><font size="1">Barriera</font></b>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; text-align: center; margin-bottom: 1">
+            <font size="1"><b>Facilitatore</b></font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.</font><font size="2"><b>0</b></font><font size="1">&#160;- NESSUNA (assente, trascurabile...) 0-4% </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.</font><font size="2"><b>+0</b></font><font size="1">&#160;- NESSUNO (assente, trascurabile...) 0-4% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.</font><font size="2"><b>1</b></font><font size="1">&#160;- LIEVE (leggera, piccola...) 5-24% </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.</font><font size="2"><b>+1</b></font><font size="1">&#160;- LIEVE (leggera, piccola...) 5-24% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.</font><font size="2"><b>2</b></font><font size="1">&#160;- MEDIA (moderata, discreta...) 25-49% </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.</font><font size="2"><b>+2</b></font><font size="1">&#160;- MEDIO (moderata, discreta...) 25-49% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.</font><font size="2"><b>3</b></font><font size="1">&#160;- GRAVE (notevole, estrema...) 50-95% </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.</font><font size="2"><b>+3</b></font><font size="1">&#160;- GRAVE (notevole, estrema...) 50-95% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.</font><font size="2"><b>4</b></font><font size="1">&#160;- COMPLETA (totale...) 96-100% </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.</font><font size="2"><b>+4</b></font><font size="1">&#160;- COMPLETO (totale...) 96-100% </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.<b>8</b>&#160;non specificato </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.<b>+8</b>&#160;non specificato </font>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-width: 1; border-right-width: 1; border-bottom-style: solid; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            <font size="1">xxx.<b>9</b>&#160;non applicabile </font>
+          </p>
+        </td>
+        <td style="border-top-width: 1; width: 50%; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-right-width: 1; border-bottom-width: 1; border-left-width: 1; border-left-style: solid" valign="top">
+          <p style="margin-right: 1; margin-top: 1; margin-left: 1; margin-bottom: 1">
+            
+          </p>
+        </td>
+      </tr>
+    </table>
+  </span>
+<ul id="fold1_4" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_4_1" class="foldclosed" onClick="show_folder('1_4_1')" style="POSITION: absolute">+</span> <span id="hide1_4_1" class="foldopened" onClick="hide_folder('1_4_1')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(e1) Prodotti e tecnologia</span>
+<ul id="fold1_4_1" style="POSITION: relative; VISIBILITY: visible;"><li>e110 Prodotti o sostanze per il consumo personale</span>
+
+</li>
+<li>e115 Prodotti e tecnologia per l&#x2019;uso personale nella vita quotidiana</span>
+
+</li>
+<li>e120 Prodotti e tecnologia per la mobilit&#xe0; e il trasporto in ambienti interni e esterni</span>
+
+</li>
+<li>e125 Prodotti e tecnologia per la comunicazione</span>
+
+</li>
+<li>e130 Prodotti e tecnologia per l&#x2019;istruzione</span>
+
+</li>
+<li>e135 Prodotti e tecnologia per il lavoro</span>
+
+</li>
+<li>e140 Prodotti e tecnologia per la cultura, la ricreazione e lo sport</span>
+
+</li>
+<li>e145 Prodotti e tecnologia per la pratica della religione o della spiritualit&#xe0;</span>
+
+</li>
+<li>e150 Prodotti e tecnologia per la progettazione e la costruzione di edifici per il pubblico utilizzo</span>
+
+</li>
+<li>e155 Prodotti e tecnologia per la progettazione e la costruzione di edifici per utilizzo privato</span>
+
+</li>
+<li>e160 Prodotti e tecnologia per lo sviluppo del territorio</span>
+
+</li>
+<li>e165 Risorse e beni</span>
+
+</li>
+<li>e198 Prodotti e tecnologia, altro specificato</span>
+
+</li>
+<li>e199 Prodotti e tecnologia, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4_2" class="foldclosed" onClick="show_folder('1_4_2')" style="POSITION: absolute">+</span> <span id="hide1_4_2" class="foldopened" onClick="hide_folder('1_4_2')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(e2) Ambiente naturale e cambiamenti ambientali effettuati dall&#x2019;uomo</span>
+<ul id="fold1_4_2" style="POSITION: relative; VISIBILITY: visible;"><li>e210 Geografia fisica</span>
+
+</li>
+<li>e215 Popolazione</span>
+
+</li>
+<li>e220 Flora e fauna</span>
+
+</li>
+<li>e225 Clima</span>
+
+</li>
+<li>e230 Eventi naturali</span>
+
+</li>
+<li>e235 Eventi causati dall&#x2019;uomo</span>
+
+</li>
+<li>e240 Luce</span>
+
+</li>
+<li>e245 Cambiamenti correlati al tempo</span>
+
+</li>
+<li>e250 Suono</span>
+
+</li>
+<li>e255 Vibrazione</span>
+
+</li>
+<li>e260 Qualit&#xe0; dell&#x2019;aria</span>
+
+</li>
+<li>e298 Ambiente naturale e cambiamenti effettuati dall&#x2019;uomo, altro specificato</span>
+
+</li>
+<li>e299 Ambiente naturale e cambiamenti effettuati dall&#x2019;uomo, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4_3" class="foldclosed" onClick="show_folder('1_4_3')" style="POSITION: absolute">+</span> <span id="hide1_4_3" class="foldopened" onClick="hide_folder('1_4_3')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(e3) Relazioni e sostegno sociale</span>
+<ul id="fold1_4_3" style="POSITION: relative; VISIBILITY: visible;"><li>e310 Famiglia ristretta</span>
+
+</li>
+<li>e320 Famiglia allargata</span>
+
+</li>
+<li>e320 Amici</span>
+
+</li>
+<li>e325 Conoscenti, colleghi, vicini di casa e membri della comunit&#xe0;</span>
+
+</li>
+<li>e330 Persone in posizioni di autorit&#xe0;</span>
+
+</li>
+<li>e335 Persone in posizioni subordinate</span>
+
+</li>
+<li>e340 Persone che forniscono aiuto o assistenza</span>
+
+</li>
+<li>e345 Estranei</span>
+
+</li>
+<li>e350 Animali domestici</span>
+
+</li>
+<li>e355 Operatori sanitari</span>
+
+</li>
+<li>e360 Altri operatori</span>
+
+</li>
+<li>e398 Relazioni e sostegno sociale, altro specificato</span>
+
+</li>
+<li>e399 Relazioni e sostegno sociale, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4_4" class="foldclosed" onClick="show_folder('1_4_4')" style="POSITION: absolute">+</span> <span id="hide1_4_4" class="foldopened" onClick="hide_folder('1_4_4')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(e4) Atteggiamenti</span>
+<ul id="fold1_4_4" style="POSITION: relative; VISIBILITY: visible;"><li>e410 Atteggiamenti individuali dei componenti della famiglia ristretta</span>
+
+</li>
+<li>e415 Atteggiamenti individuali dei componenti della famiglia allargata</span>
+
+</li>
+<li>e420 Atteggiamenti individuali degli amici</span>
+
+</li>
+<li>e425 Atteggiamenti individuali di conoscenti, colleghi, vicini di casa e membri della comunit&#xe0;</span>
+
+</li>
+<li>e430 Atteggiamenti individuali di persone in posizioni di autorit&#xe0;</span>
+
+</li>
+<li>e435 Atteggiamenti individuali di persone in posizioni subordinate</span>
+
+</li>
+<li>e440 Atteggiamenti individuali di persone che forniscono aiuto o assistenza</span>
+
+</li>
+<li>e445 Atteggiamenti individuali di estranei</span>
+
+</li>
+<li>e450 Atteggiamenti individuali di operatori sanitari</span>
+
+</li>
+<li>e455 Atteggiamenti individuali di altri operatori</span>
+
+</li>
+<li>e460 Atteggiamenti della societ&#xe0;</span>
+
+</li>
+<li>e465 Norme sociali, costumi e ideologie</span>
+
+</li>
+<li>e498 Atteggiamenti, altro specificato</span>
+
+</li>
+<li>e499 Atteggiamenti, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4_5" class="foldclosed" onClick="show_folder('1_4_5')" style="POSITION: absolute">+</span> <span id="hide1_4_5" class="foldopened" onClick="hide_folder('1_4_5')">-</span>
+<span style="color: #990000; font-size: 12pt; ">(e5) Servizi, sistemi e politiche</span>
+<ul id="fold1_4_5" style="POSITION: relative; VISIBILITY: visible;"><li>e510 Servizi, sistemi e politiche per la produzione di beni di consumo</span>
+
+</li>
+<li>e515 Servizi, sistemi e politiche per l&#x2019;architettura e la costruzione</span>
+
+</li>
+<li>e520 Servizi, sistemi e politiche per la pianificazione dello spazio aperto</span>
+
+</li>
+<li>e525 Servizi, sistemi e politiche abitative</span>
+
+</li>
+<li>e530 Servizi, sistemi e politiche di pubblica utilit&#xe0;</span>
+
+</li>
+<li>e535 Servizi, sistemi e politiche di comunicazione</span>
+
+</li>
+<li>e540 Servizi, sistemi e politiche di trasporto</span>
+
+</li>
+<li>e545 Servizi, sistemi e politiche di protezione civile</span>
+
+</li>
+<li>e550 Servizi, sistemi e politiche legali</span>
+
+</li>
+<li>e555 Servizi, sistemi e politiche delle associazioni e delle organizzazioni</span>
+
+</li>
+<li>e560 Servizi, sistemi e politiche dei mass media</span>
+
+</li>
+<li>e565 Servizi, sistemi e politiche dell&#x2019;economia</span>
+
+</li>
+<li>e570 Servizi, sistemi e politiche previdenziali/assistenziali</span>
+
+</li>
+<li>e575 Servizi, sistemi e politiche di sostegno sociale generale</span>
+
+</li>
+<li>e580 Servizi, sistemi e politiche sanitarie</span>
+
+</li>
+<li>e585 Servizi, sistemi e politiche dell&#x2019;istruzione e della formazione</span>
+
+</li>
+<li>e590 Servizi, sistemi e politiche del lavoro</span>
+
+</li>
+<li>e595 Servizi e sistemi politici, e politiche</span>
+
+</li>
+<li>e598 Servizi, sistemi e politiche, altro specificato</span>
+
+</li>
+<li>e599 Servizi, sistemi e politiche, non specificato</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul><SCRIPT type="text/javascript">
+fold_document();
+</SCRIPT>
+</body>
+</html>
