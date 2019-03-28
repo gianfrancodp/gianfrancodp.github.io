@@ -3,7 +3,30 @@
 <head>
 <title>ICF short version</title>
 <style type="text/css">
-    body {}
+    body
+        {
+          margin: 30;
+          padding: 20;
+
+          /* make it look decent enough */
+          background: #232323;
+          color: #cdcdcd;
+          font-family: "Avenir Next", "Avenir", sans-serif;
+        }
+
+        a
+        {
+          text-decoration: none;
+          color: #232323;
+
+          transition: color 0.3s ease;
+        }
+
+a:hover
+{
+  color: tomato;
+}
+
     li { list-style: none;  margin: 0; }
     p { margin: 0; }
     span.foldopened { color: white; font-size: xx-small;
@@ -128,8 +151,8 @@ function unfold_document() {
 }
 
 </script>
-<SPAN class="foldspecial" onclick="fold_document()">All +</SPAN>
-<SPAN class="foldspecial" onclick="unfold_document()">All -</SPAN>
+<SPAN class="foldspecial" onclick="fold_document()">Raggruppa tutto</SPAN>
+<SPAN class="foldspecial" onclick="unfold_document()">Espandi tutto</SPAN>
 <p>
     <h1>Versione Breve dell'ICF</h1>
     
@@ -937,13 +960,14 @@ Funzioni dei peli, dei capelli e delle unghie (b850-b869)</span>
   </span>
 <ul id="fold1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_2_1" class="foldclosed" onClick="show_folder('1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1" class="foldopened" onClick="hide_folder('1_2_1')">-</span>
 <span style="color: #990000; font-size: 12pt; ">(s1) Strutture del sistema nervoso</span>
-<ul id="fold1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li>s110 Struttura del cervello</span>
+<ul id="fold1_2_1" style="POSITION: relative; VISIBILITY: visible;">
+<li>s110 Struttura del cervello
 
 </li>
-<li>s120 Midollo spinale e strutture correlate</span>
+<li>s120 Midollo spinale e strutture correlate
 
 </li>
-<li>s130 Struttura delle meningi</span>
+<li>s130 Struttura delle meningi
 
 </li>
 <li>s140 Struttura del sistema nervoso simpatico</span>
