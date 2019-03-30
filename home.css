@@ -2,7 +2,9 @@ body {
     padding-top: 70px;
 
 }
-
+.container{
+    padding-top: 50px;
+}
 .myfaceeffect img {
  filter: grayscale(100%);
 }

@@ -8,11 +8,12 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <!--FontAwesome 4.7.0-->
-    <link rel="stylesheet" href="fontawesome/css/font-awesome.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Academicon -->
     <link rel="stylesheet" href="academicons/css/academicons.min.css"/>
+
     <link rel="stylesheet" href="home.css"/>
-    <!--http://jpswalsh.github.io/academicons/-->
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +26,7 @@
 <body>
 <!-- Fixed navbar -->
 <!--    <a class="navbar-brand" href="#"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>-->
- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+ <nav id="header" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a class="navbar-brand" href="index.html"><i class="fa fa-address-card-o"></i></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,46 +34,23 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="#home">GDP</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#teaching"><i class="glyphicon glyphicon-blackboard"></i> Teaching</a>
-<!--              <a class="page-scroll" href="#teaching"><i class="glyphicon glyphicon-blackboard"></i> Teaching</a>-->
+            <a class="nav-link" href="#teaching"><i class="fas fa-chalkboard-teacher"></i> Teaching</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <a class="nav-link" href="#research"><i class="fas fa-user-graduate"></i> Research</a>
           </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#engineering"><i class="fa fa-building"></i> Engineering</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="#coding"><i class="fa fa-code"></i> Coding</a></li>
+          <
         </ul>
       </div>
     </nav>
 
-    <!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
-    <!--
-    <nav class="navbar navbar-dark fixed-top">
-        <div class="header">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Menù</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-
-                </button>
-                <a class="navbar-brand" href="#"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
-                <p class="navbar-text">Home</p>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a class="page-scroll" href="#teaching"><i class="glyphicon glyphicon-blackboard"></i> Teaching</a></li>
-                    <li><a class="page-scroll" href="#research"><i class="glyphicon glyphicon-education"> Research</i></a></li>
-                    <li><a class="page-scroll" href="#engineering"><i class="fa fa-building"></i> Engineering</a></li>
-                    <li><a class="page-scroll" href="#coding"><i class="fa fa-code" aria-hidden="true"></i> Coding</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </nav>
-    -->
     <div id="home"></div>
 
     <div class="container">
@@ -86,7 +64,7 @@
                 <h1>Gianfranco Di Pietro</h1>
                 <p class="lead">I'm a father, teacher, civil and environmental engineer, web and mobile developer, researcher... and this is my personal website. You are Welcome</p>
 
-                <p class="lead text-center">These are my personal contacts and profile:<br><a href="https://www.facebook.com/gianfrancodipietro" target="_blank"><i class="fa fa-facebook-square"></i></a> ~ <a href="https://www.instagram.com/gianfrancodp/" target="_blank"><i class="fa fa-instagram"></i></a> ~ <a href="https://www.linkedin.com/in/gianfrancodipietro/" target="_blank"><i class="fa fa-linkedin"></i></a> ~ <a href="https://twitter.com/GianfrancoDP" target="_blank"><i class="fa fa-twitter"></i></a> ~ <a href="https://t.me/gianfrancodp" target="_blank"><i class="fa fa-telegram"></i></a> ~ <a href="https://wa.me/393933919394" target="_blank"><i class="fa fa-whatsapp"></i></a> ~ <a href="mailto:gianfrancodipietro@gmail.com" target="_parent"><i class="fa fa-at"></i></a><br>Please entroduce yourself before text me.</p>
+                <p class="lead text-center">These are my personal contacts and profile:<br><a href="https://www.facebook.com/gianfrancodipietro" target="_blank"><i class="fab fa-facebook"></i></a> ~ <a href="https://www.instagram.com/gianfrancodp/" target="_blank"><i class="fab fa-instagram"></i></a> ~ <a href="https://www.linkedin.com/in/gianfrancodipietro/" target="_blank"><i class="fab fa-linkedin"></i></a> ~ <a href="https://twitter.com/GianfrancoDP" target="_blank"><i class="fab fa-twitter"></i></a> ~ <a href="https://t.me/gianfrancodp" target="_blank"><i class="fab fa-telegram"></i></a> ~ <a href="https://wa.me/393933919394" target="_blank"><i class="fab fa-whatsapp"></i></a> ~ <a href="mailto:gianfrancodipietro@gmail.com" target="_parent"><i class="fa fa-at"></i></a><br>Please entroduce yourself before text me.</p>
                 
             </div>
 
@@ -94,14 +72,12 @@
         
     </div>
 
-    <hr>
-    
-    
+    <hr id="teaching">
     <div id="teaching" class="container">
         <div class="row">
             <div class="col-md-12">
 
-            <h1><i class="glyphicon glyphicon-blackboard"></i> Teaching</h1>
+            <h1><i class="fas fa-chalkboard-teacher"></i> Teaching</h1>
                 <p>
                     I am a personal and professionals trainer/teacher on these topics: 
                     <ul>
@@ -137,7 +113,7 @@
 	<div class="row">
 		<div class="col-md-12">
 		
-		<h1><i class="glyphicon glyphicon-education"></i> Research</h1>
+		<h1><i class="fas fa-user-graduate"></i></i> Research</h1>
 		<p>
 		I am a researcher at <a href="https://www.geofunction.it" target="_blank">Geofunction</a> since 2012, most of my research articles are about Geographical Information Systems. Many of my research start from real problems that I've solved in many of my activities.
 		</p>
