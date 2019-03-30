@@ -1,6 +1,12 @@
+body {
+    padding-top: 70px;
+
+}
+
 .myfaceeffect img {
  filter: grayscale(100%);
 }
 .myfaceeffect img:hover {
 filter: grayscale(0);
 }
+
