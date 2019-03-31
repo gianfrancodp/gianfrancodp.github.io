@@ -12,3 +12,11 @@ body {
 filter: grayscale(0);
 }
 
+.footer {
+  background-color: #f5f5f5;x
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+
