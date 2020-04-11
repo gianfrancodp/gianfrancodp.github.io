@@ -19,6 +19,13 @@ body {
   padding-left: 15px;
   padding-bottom: 15px;
 }
+.h-divider{
+    margin-top:5px;
+    margin-bottom:5px;
+    height:1px;
+    width:100%;
+    border-top:1px solid gray;
+}
 
 #return-to-top {
     position: fixed;
@@ -60,3 +67,5 @@ body {
     color: #fff;
     top: 5px;
 }
+
+
