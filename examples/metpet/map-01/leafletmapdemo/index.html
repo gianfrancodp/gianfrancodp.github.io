@@ -40,6 +40,7 @@
         var map = L.map('map', {
             zoomControl:true, maxZoom:16, minZoom:1
         })
+        
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('CCBYSA &middot; Gianfranco Di Pietro &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot;');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -66,20 +67,28 @@
         function pop_CartaGeologica_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">fid</th>\
-                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Id'] !== null ? autolinker.link(feature.properties['Id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Litotipo</th>\
+                        <th scope="row">Litotipo: </th>\
                         <td>' + (feature.properties['Litotipo'] !== null ? autolinker.link(feature.properties['Litotipo'].toLocaleString()) : '') + '</td>\
                     </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['3yhw'] !== null ? autolinker.link(feature.properties['3yhw'].toLocaleString()) : '') + '</td>\
-                    </tr>\
                 </table>';
+            // var popupContent = '<table>\
+            //         <tr>\
+            //             <th scope="row">fid</th>\
+            //             <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+            //         </tr>\
+            //         <tr>\
+            //             <td colspan="2">' + (feature.properties['Id'] !== null ? autolinker.link(feature.properties['Id'].toLocaleString()) : '') + '</td>\
+            //         </tr>\
+            //         <tr>\
+            //             <th scope="row">Litotipo</th>\
+            //             <td>' + (feature.properties['Litotipo'] !== null ? autolinker.link(feature.properties['Litotipo'].toLocaleString()) : '') + '</td>\
+            //         </tr>\
+            //         <tr>\
+            //             <td colspan="2">' + (feature.properties['3yhw'] !== null ? autolinker.link(feature.properties['3yhw'].toLocaleString()) : '') + '</td>\
+            //         </tr>\
+            //     </table>';
+
+            
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
@@ -311,15 +320,35 @@
         });
         bounds_group.addLayer(layer_CartaGeologica_1);
         map.addLayer(layer_CartaGeologica_1);
+
+        // pop up litografia
         function pop_Litografia_2(feature, layer) {
+            // pop up di prova 
+            // Per il momento viene caricata una mini-tabella e una immagine miniatura
+            // l'immagine linka ad un URL esterno.
+
             var popupContent = '<table>\
-                    <tr>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Id</th>\
-                        <td>' + (feature.properties['Id'] !== null ? autolinker.link(feature.properties['Id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+                <tr><th style="text-align: center; vertical-align: middle;"> Sezione Sottile </th></tr>\
+                <tr><td style="text-align: center; vertical-align: middle;">\
+                \
+                <a href="https://it.wikipedia.org/wiki/File:Thin_section_scan_crossed_polarizers_Siilinjärvi_R636-105.90_edit.jpg"> \
+                    <img\
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Thin_section_scan_crossed_polarizers_Siilinjärvi_R636-105.90_edit.jpg/320px-Thin_section_scan_crossed_polarizers_Siilinjärvi_R636-105.90_edit.jpg"\
+                        alt="an image"\
+                        style="width:128px" \
+                    >\
+                </a>\
+                </td></tr></table>'; 
+                 
+      
+            // var popupContent = '<table>\
+            //         <tr>\
+            //         </tr>\
+            //         <tr>\
+            //             <th scope="row">Id</th>\
+            //             <td>' + (feature.properties['Id'] !== null ? autolinker.link(feature.properties['Id'].toLocaleString()) : '') + '</td>\
+            //         </tr>\
+            //     </table>'; 
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
